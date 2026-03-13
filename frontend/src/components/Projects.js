@@ -6,6 +6,8 @@ import { Github, ExternalLink, Code2, Folder } from "lucide-react";
 const Projects = () => {
     const [projects, setProjects] = useState([]);
     const [loading, setLoading] = useState(true);
+    const [query, setQuery] = useState("");
+    const [selectedTech, setSelectedTech] = useState("All");
 
     useEffect(() => {
         setLoading(true);
@@ -34,6 +36,18 @@ const Projects = () => {
         hidden: { opacity: 0, y: 50 },
         visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } }
     };
+
+    const uniqueTechs = Array.from(new Set(projects.flatMap(p => p.techStack || []))).sort();
+    const filteredProjects = projects.filter(project => {
+        const matchQuery = query.trim().length === 0 ||
+            project.title.toLowerCase().includes(query.toLowerCase()) ||
+            project.description.toLowerCase().includes(query.toLowerCase()) ||
+            (project.techStack || []).some(t => t.toLowerCase().includes(query.toLowerCase()));
+
+        const matchTech = selectedTech === "All" || (project.techStack || []).includes(selectedTech);
+
+        return matchQuery && matchTech;
+    });
 
     // Loading Skeleton Component
     const LoadingSkeleton = () => (
@@ -91,15 +105,39 @@ const Projects = () => {
                 initial={{ opacity: 0 }}
                 whileInView={{ opacity: 1 }}
                 transition={{ delay: 0.2, duration: 0.5 }}
-                className="text-gray-400 text-center mb-16 max-w-2xl mx-auto"
+                className="text-gray-400 text-center mb-8 max-w-2xl mx-auto"
             >
                 Explore my latest work and innovative solutions
             </motion.p>
+
+            <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-start md:items-center gap-4 mb-10 px-4">
+                <input
+                    value={query}
+                    onChange={(e) => setQuery(e.target.value)}
+                    placeholder="Search projects by title, description or tech..."
+                    className="w-full md:w-1/2 px-4 py-2 rounded-xl bg-gray-900 border border-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                />
+                <select
+                    value={selectedTech}
+                    onChange={(e) => setSelectedTech(e.target.value)}
+                    className="w-full md:w-1/4 px-4 py-2 rounded-xl bg-gray-900 border border-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                >
+                    <option value="All">All Tech</option>
+                    {uniqueTechs.map((tech) => (
+                        <option key={tech} value={tech}>{tech}</option>
+                    ))}
+                </select>
+            </div>
 
             {loading ? (
                 <LoadingSkeleton />
             ) : projects.length === 0 ? (
                 <EmptyState />
+            ) : filteredProjects.length === 0 ? (
+                <motion.div className="text-center py-20">
+                    <h3 className="text-xl font-semibold text-gray-300">No projects match your search/filter.</h3>
+                    <p className="text-gray-500">Try a different keyword or technology.</p>
+                </motion.div>
             ) : (
                 <motion.div
                     variants={containerVariants}
@@ -108,7 +146,7 @@ const Projects = () => {
                     viewport={{ once: true, amount: 0.1 }}
                     className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto"
                 >
-                    {projects.map((project, index) => (
+                    {filteredProjects.map((project, index) => (
                         <motion.div
                             key={project._id || index}
                             variants={cardVariants}
