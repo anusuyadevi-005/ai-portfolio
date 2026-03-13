@@ -1,13 +1,40 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useCallback } from "react";
 import axios from "axios";
 import { motion } from "framer-motion";
-import { Github, ExternalLink, Code2, Folder } from "lucide-react";
+import { Github, ExternalLink, Code2, Folder, Trash2, Edit } from "lucide-react";
 
 const Projects = () => {
     const [projects, setProjects] = useState([]);
     const [loading, setLoading] = useState(true);
     const [query, setQuery] = useState("");
     const [selectedTech, setSelectedTech] = useState("All");
+    const [adminMode, setAdminMode] = useState(false);
+    const [editingProjectId, setEditingProjectId] = useState(null);
+    const [form, setForm] = useState({
+        title: "",
+        description: "",
+        techStack: "",
+        githubLink: "",
+        liveLink: ""
+    });
+    const [alertMessage, setAlertMessage] = useState("");
+
+    const fetchProjects = useCallback(async () => {
+        setLoading(true);
+        try {
+            const res = await axios.get("http://localhost:5000/api/projects");
+            setProjects(res.data);
+        } catch (err) {
+            console.error(err);
+            setAlertMessage("Failed to load projects.");
+        } finally {
+            setLoading(false);
+        }
+    }, []);
+
+    useEffect(() => {
+        fetchProjects();
+    }, [fetchProjects]);
 
     useEffect(() => {
         setLoading(true);
