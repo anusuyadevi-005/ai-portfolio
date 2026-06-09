@@ -4,7 +4,6 @@ import { motion, AnimatePresence, useScroll } from "framer-motion";
 import { Menu, X } from "lucide-react";
 
 const Navbar = () => {
-    const location = useLocation();
     const [isOpen, setIsOpen] = useState(false);
     const [scrolled, setScrolled] = useState(false);
     const { scrollYProgress } = useScroll();

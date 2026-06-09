@@ -110,14 +110,7 @@ const AIChatbot = () => {
 
         // Skills - General
         if ((input.includes("skill") || input.includes("tech") || input.includes("know") || input.includes("language")) && !input.includes("best")) {
-            const allSkills = [
-                ...knowledgeBase.skills.frontend,
-                ...knowledgeBase.skills.backend,
-                ...knowledgeBase.skills.languages,
-                ...knowledgeBase.skills.database,
-                ...knowledgeBase.skills.tools
-            ];
-            return `Anusuya is skilled in:\n\n🎨 Frontend: ${knowledgeBase.skills.frontend.join(", ")}\n⚙️ Backend: ${knowledgeBase.skills.backend.join(", ")}\n💻 Languages: ${knowledgeBase.skills.languages.join(", ")}\n🗄️ Database: ${knowledgeBase.skills.database.join(", ")}\n🛠️ Tools: ${knowledgeBase.skills.tools.join(", ")}`;
+            return "I have a strong foundation in full-stack and backend development. My technical stack includes HTML, CSS, React, Javascript, Node, Django, C, C++, Java, MySQL, MongoDB, Git, and Docker. Is there a specific technology you'd like to know more about?";
         }
 
         // Best/Strongest Skills
