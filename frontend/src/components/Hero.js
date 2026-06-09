@@ -1,10 +1,10 @@
 import React from "react";
-import { Link } from "react-router-dom";
+
 import { motion } from "framer-motion";
 import { FaPython, FaReact, FaNodeJs, FaGithub, FaLinkedin } from "react-icons/fa";
 import { SiCplusplus, SiTensorflow, SiMongodb } from "react-icons/si";
 import { Typewriter } from "react-simple-typewriter";
-import { Mail, ChevronDown } from "lucide-react";
+import { Mail, ChevronDown, Download } from "lucide-react";
 
 const Hero = () => {
     return (
@@ -154,13 +154,14 @@ const Hero = () => {
                     </motion.a>
                 </motion.div>
 
-                {/* Navigation Button */}
+                {/* Navigation Buttons */}
                 <motion.div
                     initial={{ opacity: 0, scale: 0.8 }}
                     animate={{ opacity: 1, scale: 1 }}
                     transition={{ delay: 1, type: "spring", stiffness: 200 }}
+                    className="flex flex-col sm:flex-row gap-6 justify-center items-center"
                 >
-                    <Link to="/projects">
+                    <a href="#projects">
                         <motion.button
                             whileHover={{ scale: 1.05, boxShadow: "0 0 25px rgba(59, 130, 246, 0.6)" }}
                             whileTap={{ scale: 0.95 }}
@@ -169,7 +170,18 @@ const Hero = () => {
                             <span className="relative z-10">View My Work</span>
                             <div className="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-out"></div>
                         </motion.button>
-                    </Link>
+                    </a>
+
+                    <a href="/resume.pdf" download="Anusuyadevi_Resume.pdf">
+                        <motion.button
+                            whileHover={{ scale: 1.05, boxShadow: "0 0 25px rgba(168, 85, 247, 0.4)" }}
+                            whileTap={{ scale: 0.95 }}
+                            className="flex items-center gap-3 px-10 py-4 bg-gray-800/50 backdrop-blur-md border border-purple-500/50 rounded-full text-xl font-bold text-white shadow-xl shadow-purple-500/20 transition-all hover:bg-purple-500/20"
+                        >
+                            <Download size={22} className="text-purple-400" />
+                            <span>Download Resume</span>
+                        </motion.button>
+                    </a>
                 </motion.div>
             </motion.div>
 

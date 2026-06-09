@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import { motion, AnimatePresence, useScroll } from "framer-motion";
 import { Menu, X } from "lucide-react";
 
@@ -18,12 +18,12 @@ const Navbar = () => {
     }, []);
 
     const links = [
-        { name: "Home", path: "/" },
-        { name: "About", path: "/about" },
-        { name: "Skills", path: "/skills" },
-        { name: "Certificates", path: "/certificates" },
-        { name: "Projects", path: "/projects" },
-        { name: "Resume", path: "/resume" },
+        { name: "Home", path: "#home" },
+        { name: "About", path: "#about" },
+        { name: "Skills", path: "#skills" },
+        { name: "Certificates", path: "#certificates" },
+        { name: "Projects", path: "#projects" },
+        { name: "Resume", path: "#resume" },
     ];
 
     const navVariants = {
@@ -52,28 +52,25 @@ const Navbar = () => {
                     }`}
             >
                 <div className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
-                    <Link to="/" className="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-purple-600">
+                    <a href="#home" className="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-purple-600">
                         Anusuyadevi N
-                    </Link>
+                    </a>
 
                     {/* Desktop Menu */}
                     <div className="hidden md:flex gap-8">
                         {links.map((link) => (
-                            <Link key={link.name} to={link.path} className="relative group">
+                            <a key={link.name} href={link.path} className="relative group text-gray-300 hover:text-blue-400">
                                 <motion.span
                                     variants={linkVariants}
                                     whileHover="hover"
                                     whileTap="tap"
-                                    className={`text-sm font-medium transition-colors ${location.pathname === link.path
-                                        ? "text-blue-400"
-                                        : "text-gray-300 group-hover:text-blue-400"
-                                        }`}
+                                    className={`text-sm font-medium transition-colors`}
                                 >
                                     {link.name}
                                 </motion.span>
                                 {/* Underline Animation */}
-                                <span className={`absolute left-0 bottom-[-4px] w-0 h-[2px] bg-blue-500 transition-all duration-300 group-hover:w-full ${location.pathname === link.path ? "w-full" : ""}`}></span>
-                            </Link>
+                                <span className={`absolute left-0 bottom-[-4px] w-0 h-[2px] bg-blue-500 transition-all duration-300 group-hover:w-full`}></span>
+                            </a>
                         ))}
                     </div>
 
@@ -94,17 +91,14 @@ const Navbar = () => {
                         >
                             <div className="flex flex-col items-center gap-6 py-8">
                                 {links.map((link) => (
-                                    <Link
+                                    <a
                                         key={link.name}
-                                        to={link.path}
+                                        href={link.path}
                                         onClick={() => setIsOpen(false)}
-                                        className={`text-lg font-medium transition-colors ${location.pathname === link.path
-                                            ? "text-blue-400"
-                                            : "text-gray-300 hover:text-white"
-                                            }`}
+                                        className={`text-lg font-medium transition-colors text-gray-300 hover:text-white`}
                                     >
                                         {link.name}
-                                    </Link>
+                                    </a>
                                 ))}
                             </div>
                         </motion.div>

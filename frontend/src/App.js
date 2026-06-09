@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { BrowserRouter as Router } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
 import About from "./components/About";
@@ -16,15 +16,13 @@ function App() {
       <div className="bg-black min-h-screen text-white font-sans selection:bg-blue-500 selection:text-white pb-20">
         <Navbar />
 
-        <div className="pt-20"> {/* Padding for fixed Navbar */}
-          <Routes>
-            <Route path="/" element={<Hero />} />
-            <Route path="/about" element={<About />} />
-            <Route path="/skills" element={<Skills />} />
-            <Route path="/certificates" element={<Certificates />} />
-            <Route path="/projects" element={<Projects />} />
-            <Route path="/resume" element={<Resume />} />
-          </Routes>
+        <div className="pt-20 flex flex-col w-full overflow-hidden"> {/* Padding for fixed Navbar */}
+          <div id="home"><Hero /></div>
+          <div id="about"><About /></div>
+          <div id="skills"><Skills /></div>
+          <div id="certificates"><Certificates /></div>
+          <div id="projects"><Projects /></div>
+          <div id="resume"><Resume /></div>
         </div>
 
         <AIChatbot />

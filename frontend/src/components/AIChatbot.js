@@ -20,61 +20,66 @@ const AIChatbot = () => {
     const knowledgeBase = {
         personal: {
             name: "Anusuyadevi N",
-            status: "Pre-final Year Computer Science Engineering Student",
-            graduation: "2025 (Expected)",
-            interests: "Full Stack Development, AI/ML, Problem Solving"
+            status: "Computer Science Engineering Student",
+            graduation: "2027",
+            interests: "Full Stack Development, Backend Development"
         },
         skills: {
-            frontend: ["HTML", "CSS", "JavaScript", "React"],
-            backend: ["Node.js", "Express", "Spring Boot"],
-            languages: ["Python", "Java", "C++"],
-            database: ["MongoDB", "DBMS"],
-            tools: ["Git", "GitHub"],
+            frontend: ["HTML", "CSS", "React", "Javascript"],
+            backend: ["Node", "Django"],
+            languages: ["C", "C++", "Java"],
+            database: ["Mysql", "MongoDB"],
+            tools: ["Git", "GitHub", "Docker"],
             proficiency: {
                 "HTML": 90, "CSS": 85, "JavaScript": 80, "React": 85,
-                "Node.js": 80, "Express": 80, "Spring Boot": 75,
-                "Python": 85, "Java": 80, "C++": 70,
-                "MongoDB": 75, "Git": 85
+                "Node.js": 80, "Django": 75,
+                "Java": 85, "C": 80, "C++": 80,
+                "MongoDB": 75, "MySQL": 80, "Git": 85
             }
         },
         projects: [
             {
-                name: "Virtual Internship Platform",
-                description: "Web platform for virtual internship management and tracking",
-                tech: ["HTML", "JavaScript", "CSS"]
+                name: "Virtual Internship Management System - Spring Boot",
+                description: "Platform to manage virtual internships for students, companies, and coordinators",
+                tech: ["Java", "Spring Boot", "MySQL"]
             },
             {
-                name: "MWT Portfolio Project",
-                description: "Modern Web Technologies portfolio showcasing full-stack development",
-                tech: ["React", "JavaScript", "CSS", "HTML"]
+                name: "Tamil Nadu Tours - MERN",
+                description: "Web-based Journey Management System to automate travel planning, packages, and bookings",
+                tech: ["React", "Node.js", "MongoDB", "Express"]
             },
             {
-                name: "NoSQL Database Project",
-                description: "Full-stack application with NoSQL database integration using React and Vite",
-                tech: ["React", "Vite", "JavaScript", "NoSQL", "CSS"]
+                name: "Smart Mushroom Management System",
+                description: "Automated mushroom cultivation platform with real-time harvest-to-stock integration and waste-to-value pipeline",
+                tech: ["React", "Node.js", "MongoDB", "Socket.IO"]
+            },
+            {
+                name: "Academic Chatbot",
+                description: "An AI-powered conversational agent designed to assist with academic queries using NLP.",
+                tech: ["Python", "NLP", "Machine Learning"]
             }
         ],
         education: {
-            degree: "Bachelor of Engineering",
+            degree: "Bachelor Of Computer science Engineering",
             field: "Computer Science and Engineering",
-            institution: "Engineering College",
-            year: "2021 - 2025 (Expected)",
-            status: "Pre-final Year"
+            institution: "National Engineering College, Kovilpatti",
+            year: "2023 - 2027",
+            status: "Student"
         },
         certificates: {
-            count: 12,
-            areas: ["Full Stack Development", "Data Structures", "Algorithms", "Web Development", "Database Management"]
+            count: 5,
+            areas: ["DBMS", "Frontend", "Troubleshooting", "MongoDB", "Cloud Computing", "Privacy and Security"]
         },
         achievements: [
-            "Completed 12+ Professional Certifications",
-            "Strong foundation in Data Structures and Algorithms",
-            "Proficient in Full Stack Development (MERN Stack)",
-            "Experience with Spring Boot and Java",
-            "Active participant in coding competitions"
+            "Completed multiple professional certifications",
+            "Strong foundation in full-stack and backend development",
+            "Developed real-world Journey Management System",
+            "Built Virtual Internship Platform using Spring Boot"
         ],
         contact: {
-            email: "2312005@nec.edu.in",
-            availability: "Open to hackathon opportunities, internships, and collaborations"
+            email: "anusuyapadmavathi2020@gmail.com",
+            phone: "7550399820",
+            availability: "Seeking an opportunity to solve real-world problems by building efficient, secure, and scalable software solutions"
         }
     };
 

@@ -1,7 +1,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { Award, ExternalLink, Home } from "lucide-react";
-import { Link } from "react-router-dom";
+
 
 const certificates = [
     {
@@ -105,7 +105,7 @@ const Certificates = () => {
             </div>
 
             <div className="mt-12">
-                <Link to="/">
+                <a href="#home">
                     <motion.button
                         whileHover={{ scale: 1.05 }}
                         whileTap={{ scale: 0.95 }}
@@ -114,7 +114,7 @@ const Certificates = () => {
                         <Home size={18} />
                         Back to Home
                     </motion.button>
-                </Link>
+                </a>
             </div>
         </div>
     );
